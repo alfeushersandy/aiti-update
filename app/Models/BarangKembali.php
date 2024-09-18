@@ -13,7 +13,7 @@ class BarangKembali extends Model
 
     public function serahTerima()
     {
-        return $this->hasMany(SerahTerima::class, 'serah_terima_id');
+        return $this->hasMany(SerahTerima::class, 'id', 'serah_terima_id');
     }
 
     public function serahTerimaDetail()

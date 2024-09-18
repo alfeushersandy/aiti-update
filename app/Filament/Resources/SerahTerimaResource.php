@@ -34,48 +34,48 @@ class SerahTerimaResource extends Resource
     {
         return $form
             ->schema([
-                // Wizard::make([
-                //     Step::make('Order Detail')
-                //         ->schema([
-                //             Forms\Components\Select::make('lokasi_id')
-                //                 ->options(function () {
-                //                     return Lokasi::all()->mapWithKeys(function ($item) {
-                //                         // Gabungkan nama_lokasi dan departemen
-                //                         return [$item->id => "{$item->nama_lokasi} | {$item->departemen}"];
-                //                     })->toArray();
-                //                 })
-                //                 ->getOptionLabelUsing(function ($value) {
-                //                     $lokasiDepartemen = Lokasi::find($value);
-                //                     return $lokasiDepartemen ? "{$lokasiDepartemen->nama_lokasi} | {$lokasiDepartemen->departemen}" : null;
-                //                 })
-                //                 ->label('Lokasi')
-                //                 ->required(),
-                //             Forms\Components\TextInput::make('user')
-                //                 ->required(),
-                //             Forms\Components\DatePicker::make('tanggal_serah')
-                //                 ->required()
-                //         ])->columns(2),
-                //     Step::make('Order Items')
-                //         ->schema([
-                //             Repeater::make('barang')
-                //                 ->schema([
-                //                     Forms\Components\Select::make('barang_id')
-                //                         ->options(function () {
-                //                             return Barang::where('status', 'Tersedia')->get()->mapWithKeys(function ($item) {
-                //                                 // Gabungkan nama_lokasi dan departemen
-                //                                 return [$item->id => "{$item->kode_barang} | {$item->tipe} | {$item->merek}"];
-                //                             })->toArray();
-                //                         })
-                //                         ->getOptionLabelUsing(function ($value) {
-                //                             $barang = Barang::find($value);
-                //                             return $barang ? "{$barang->kode_barang} | {$barang->tipe} | {$barang->merek}" : null;
-                //                         })
-                //                         ->label('Lokasi')
-                //                         ->required(),
-                //                 ])
+                Wizard::make([
+                    Step::make('Order Detail')
+                        ->schema([
+                            Forms\Components\Select::make('lokasi_id')
+                                ->options(function () {
+                                    return Lokasi::all()->mapWithKeys(function ($item) {
+                                        // Gabungkan nama_lokasi dan departemen
+                                        return [$item->id => "{$item->nama_lokasi} | {$item->departemen}"];
+                                    })->toArray();
+                                })
+                                ->getOptionLabelUsing(function ($value) {
+                                    $lokasiDepartemen = Lokasi::find($value);
+                                    return $lokasiDepartemen ? "{$lokasiDepartemen->nama_lokasi} | {$lokasiDepartemen->departemen}" : null;
+                                })
+                                ->label('Lokasi')
+                                ->required(),
+                            Forms\Components\TextInput::make('user')
+                                ->required(),
+                            Forms\Components\DatePicker::make('tanggal_serah')
+                                ->required()
+                        ])->columns(2),
+                    Step::make('Order Items')
+                        ->schema([
+                            Repeater::make('barang')
+                                ->schema([
+                                    Forms\Components\Select::make('barang_id')
+                                        ->options(function () {
+                                            return Barang::where('status', 'Tersedia')->get()->mapWithKeys(function ($item) {
+                                                // Gabungkan nama_lokasi dan departemen
+                                                return [$item->id => "{$item->kode_barang} | {$item->tipe} | {$item->merek}"];
+                                            })->toArray();
+                                        })
+                                        ->getOptionLabelUsing(function ($value) {
+                                            $barang = Barang::find($value);
+                                            return $barang ? "{$barang->kode_barang} | {$barang->tipe} | {$barang->merek}" : null;
+                                        })
+                                        ->label('Lokasi')
+                                        ->required(),
+                                ])
 
-                //         ])
-                // ])->submitAction(new HtmlString('<button type="submit">Submit</button>'))->columnSpanFull()
+                        ])
+                ])->submitAction(new HtmlString('<button type="submit">Submit</button>'))->columnSpanFull()
             ]);
     }
 

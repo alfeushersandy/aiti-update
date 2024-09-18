@@ -13,7 +13,7 @@ class SerahTerimaDetail extends Model
 
     public function barang()
     {
-        return $this->hasMany(Barang::class, 'barang_id');
+        return $this->hasMany(Barang::class, 'id', 'barang_id');
     }
 
     public function SerahTerima()
