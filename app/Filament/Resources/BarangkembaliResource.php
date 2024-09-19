@@ -45,6 +45,11 @@ class BarangkembaliResource extends Resource
                         }
                     })
                     ->searchable(),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'Rusak' => 'Rusak',
+                        'Kembali' => 'Kembali'
+                    ])
             ]);
     }
 
@@ -53,7 +58,8 @@ class BarangkembaliResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('serahTerima.kode_serah'),
-                Tables\Columns\TextColumn::make('serahTerimaDetail.barang.kode_barang')
+                Tables\Columns\TextColumn::make('serahTerimaDetail.barang.kode_barang'),
+                Tables\Columns\TextColumn::make('status'),
             ])
             ->filters([
                 //
